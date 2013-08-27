@@ -1,4 +1,4 @@
-compass_mixins
+core
 ==============
 
 Here's some mixins that I created or integrate from other people. It's very useful!
