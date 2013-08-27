@@ -1,0 +1,75 @@
+// Pulled from Bourbon ~ SHA: 93beb25236
+// Bourbon ~ https://github.com/thoughtbot/bourbon
+
+// CSS3 Animations - http://www.w3.org/TR/css3-animations/
+//
+//    Each of these mixins support comma separated lists of values, which
+//    allows different transitions for individual properties to be described
+//    in a single style rule. Each value in the list corresponds to the value
+//    at that same position in the other properties.
+
+@import "animation/animation-name";
+@import "animation/animation-duration";
+@import "animation/animation-timing-function";
+@import "animation/animation-iteration-count";
+@import "animation/animation-direction";
+@import "animation/animation-play-state";
+@import "animation/animation-delay";
+@import "animation/animation-fill-mode";
+
+// Shorthand for a basic animation. Supports multiple parentheses-deliminated values for each variable.
+// Example: @include animation-basic((slideup, fadein), (1.0s, 2.0s), ease-in);
+@mixin animation-basic(
+  $name,
+  $time: 0,
+  $motion: ease
+  ) {
+
+  $length-of-name: length($name);
+  $length-of-time: length($time);
+  $length-of-motion: length($motion);
+
+  @if $length-of-name > 1 {
+    @include animation-name(zip($name));
+  } @else {
+    @include animation-name($name);
+  }
+
+  @if $length-of-time > 1 {
+    @include animation-duration(zip($time));
+  } @else {
+    @include animation-duration($time);
+  }
+
+  @if $length-of-motion > 1 {
+    @include animation-timing-function(zip($motion));
+  } @else {
+    @include animation-timing-function($motion);
+  }
+
+}
+
+// Official animation shorthand property. Needs more work to actually be useful.
+// Spec - http://www.w3.org/TR/css3-animations/#animation
+// Values: name duration timing-function delay iteration-count direction
+
+@mixin animation(
+
+  $name: fadeIn,              // none | keyframe at-rule name
+  $duration: 1s,              // <time>
+  $timing-function: ease,     // ease | linear | ease-in | ease-out | ease-in-out | cubic-bezier(<number>, <number>, <number>, <number>)
+  $delay: 0.2s,               // <time>
+  $iteration-count: 1,        // infinite | number
+  $direction: normal,         // normal | alternate
+  $prefix: false
+  ) {
+          
+  $value: $name $duration $timing-function $delay $iteration-count $direction;
+
+  @if $prefix {
+    @include declaration(animation, $value, $prefix);
+  } @else {
+    @include experimental(animation, $value);
+  }
+
+}
