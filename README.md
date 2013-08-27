@@ -38,7 +38,8 @@ No need to install any gems.
 `arrow`    
 `circle`    
 `placeholder color`  
-`truncate`
+`truncate`  
+
 ---
 
 #####How to use Ceaser mixins
