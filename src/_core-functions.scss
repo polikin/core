@@ -27,10 +27,9 @@ $core: null !default;
 */
 
 /**
-* @tags: media queries
-* @mixin: @include media-query(value) { attribut }
-* @usage:
-* .selector @include media-query(320px) { width: 60%; }; }
+* @tags  : media queries
+* @mixin : @include media-query(value) { attribut }
+* @usage : .selector @include media-query(320px) { width: 60%; }; }
 */
 
 @mixin media-query($value, $operator: 'min-width', $query: 'screen') {
@@ -53,10 +52,9 @@ $core: null !default;
 
 
 /**
-* @tags: position
-* @mixin: @include position();
-* @usage:
-* .selector { @include position(absolute, 0, 0, 0, 0); }
+* @tags  : position
+* @mixin : @include position();
+* @usage : .selector { @include position(absolute, 0, 0, 0, 0); }
 */
 
 @mixin position ($type, $top, $right, $bottom, $left) {
@@ -69,10 +67,9 @@ $core: null !default;
 
 
 /**
-* @tags: custom size
-* @mixin: @include size();
-* @usage:
-* .selector { @include size(104, 104); }
+* @tags  : custom size
+* @mixin : @include size();
+* @usage : .selector { @include size(104, 104); }
 */
 @mixin size($height, $width) {
 	height: #{$height}px;
@@ -82,17 +79,15 @@ $core: null !default;
 /*****************/
 
 /**
-* @tags: backgroundimage
-* @for: Load background image
-* @mixin: @include backgroundimage();
-* @usage:
-* .selector { @include backgroundimage(bckg-btn-dwlmenu, png); }
+* @tags  : backgroundimage
+* @for   : Load background image
+* @mixin : @include backgroundimage();
+* @usage : .selector { @include backgroundimage(bckg-btn-dwlmenu, png); }
 */
 
 //$module: false !default;
 
-
-@mixin backgroundimage($name, $ext, $pos:top left, $repeat: no-repeat, $bgcolor:transparent, $important:null) {	
+@mixin backgroundimage($name, $ext, $pos:top left, $repeat: no-repeat, $bgcolor:transparent, $important:null, $size: null) {	
 	@if $core == true {
 		background: url('../../../../charcoal/modules/admin/assets/images/#{$name}.#{$ext}') $pos $repeat $bgcolor $important;
 	}@elseif $core == module {
@@ -100,23 +95,37 @@ $core: null !default;
 	}@else {
 		background: image-url('#{$name}.#{$ext}') $pos $repeat $bgcolor $important;
 	}
+	
+	@if $size == true {
+		@if $core == true {
+			height: image-height('../../../../charcoal/modules/admin/assets/images/#{$name}.#{$ext}');
+			width: 	image-width('../../../../charcoal/modules/admin/assets/images/#{$name}.#{$ext}');
+			
+			background: url('../../../../charcoal/modules/admin/assets/images/#{$name}.#{$ext}') $pos $repeat $bgcolor $important;
+		}@else {
+			height: image-height('#{$name}.#{$ext}');
+			width: 	image-width('#{$name}.#{$ext}');
+			
+			background: image-url('#{$name}.#{$ext}') $pos $repeat $bgcolor $important;
+		}
+	}
 }
 
 
 /*****************/
 
 /**
-* @tags: image height
-* @for: Grab the height of the image in your CSS
-* @library: Compass Image Helper || http://compass-style.org/reference/compass/helpers/urls/
-* @mixin: @include image-height();
-* @usage:
-* .selector { @include image-height(img-name, png); }
+* @tags    : image height
+* @for     : Grab the height of the image in your CSS
+* @library : Compass Image Helper || http://compass-style.org/reference/compass/helpers/urls/
+* @mixin   : @include image-height();
+* @usage   : .selector { @include image-height(img-name, png); }
 */
 
 @mixin image-height($name, $ext) {
 	@if $core == true {
 		height: image-height('../../../../charcoal/modules/admin/assets/images/#{$name}.#{$ext}');
+		
 	}@else {
 		height: image-height('#{$name}.#{$ext}');
 	}
@@ -125,12 +134,11 @@ $core: null !default;
 /*****************/
 
 /**
-* @tags: image width
-* @for: Grab the width of the image in your CSS
-* @library: Compass Image Helper || http://compass-style.org/reference/compass/helpers/urls/
-* @mixin: @include image-width();
-* @usage:
-* .selector { @include image-width(img-name, png); }
+* @tags    : image width
+* @for     : Grab the width of the image in your CSS
+* @library : Compass Image Helper || http://compass-style.org/reference/compass/helpers/urls/
+* @mixin   : @include image-width();
+* @usage   : .selector { @include image-width(img-name, png); }
 */
 
 @mixin image-width($name, $ext) {
@@ -144,12 +152,11 @@ $core: null !default;
 /*****************/
 
 /**
-* @tags: image size
-* @for: Grab the height/width of the image in your CSS
-* @library: Compass Image Helper || http://compass-style.org/reference/compass/helpers/urls/
-* @mixin: @include image-size();
-* @usage:
-* .selector { @include image-size(img-name, png); }
+* @tags    : image size
+* @for     : Grab the height/width of the image in your CSS
+* @library : Compass Image Helper || http://compass-style.org/reference/compass/helpers/urls/
+* @mixin   : @include image-size();
+* @usage   : .selector { @include image-size(img-name, png); }
 */
 
 @mixin image-size($name, $ext) {
@@ -165,12 +172,11 @@ $core: null !default;
 /*****************/
 
 /**
-* @tags: center element horizontally in absolute position
-* @for: Grab the height/width of the image and add a value to the margin-left (half of the width)
-* @library: Compass Image Helper || http://compass-style.org/reference/compass/helpers/urls/
-* @mixin: @include center-absolute();
-* @usage:
-* .selector { @include center-absolute(img-name, png); }
+* @tags    : center element horizontally in absolute position
+* @for     : Grab the height/width of the image and add a value to the margin-left (half of the width)
+* @library : Compass Image Helper || http://compass-style.org/reference/compass/helpers/urls/
+* @mixin   : @include center-absolute();
+* @usage   : .selector { @include center-absolute(img-name, png); }
 */
 
 $div: false !default;
@@ -245,10 +251,15 @@ $div-height: null;
 	}@else {
 		@if $div-height ==  variable { /* @if div height is unknown */
 			left:		50%;
-			top:		$top;
-
-			@if $top == 50% { /* center vertically with height value */
+			//top:		$top;
+			@if $top {
+				top: $top;
+			}@elseif $top == 50% { /* center vertically with height value */
 				margin-top:  - $height / 2;
+			}@elseif $bottom > 0 {
+				left: 	50%;
+				top:	auto;
+				bottom: $bottom;
 			}
 
 			width:	$width;
@@ -311,11 +322,10 @@ $div-height: null;
 /*****************/
 
 /**
-* @tags: prefix
-* @for: add prefix to your attribut
-* @mixin: @include prefixer();
-* @usage:
-* .selector { @include prefixer(attribut, value, webkit ms moz o spec); } || @include prefixer(background-size, 100%, webkit ms moz o spec);
+* @tags  : prefix
+* @for   : add prefix to your attribut
+* @mixin : @include prefixer();
+* @usage : .selector { @include prefixer(attribut, value, webkit ms moz o spec); } || @include prefixer(background-size, 100%, webkit ms moz o spec);
 */
 
 
@@ -347,11 +357,10 @@ $div-height: null;
 /*****************/
 
 /**
-* @tags: prefix & suffix
-* @for: add prefix to your attribut
-* @mixin: @include prefix-suffix();
-* @usage:
-* .selector { @include prefix-suffix(attribut, value, webkit ms moz o spec); } || @include prefixer(background-size, 100%, webkit ms moz o spec);
+* @tags  : prefix & suffix
+* @for   : add prefix to your attribut
+* @mixin : @include prefix-suffix();
+* @usage : .selector { @include prefix-suffix(attribut, value, webkit ms moz o spec); } || @include prefixer(background-size, 100%, webkit ms moz o spec);
 */
 
 @mixin prefix-suffix ($property, $value, $prefixes: webkit ms moz o spec) {
@@ -382,11 +391,10 @@ $div-height: null;
 /*****************/
 
 /**
-* @tags: suffix
-* @for: add suffix to your attribut
-* @mixin: @include suffix();
-* @usage:
-* .selector { @include suffix(attribut, value, webkit ms moz o spec); } || @include suffix(background-size, 100%, webkit ms moz o spec);
+* @tags  : suffix
+* @for   : add suffix to your attribut
+* @mixin : @include suffix();
+* @usage : .selector { @include suffix(attribut, value, webkit ms moz o spec); } || @include suffix(background-size, 100%, webkit ms moz o spec);
 */
 
 @mixin suffix ($property, $value, $prefixes: webkit ms moz o spec) {
@@ -417,10 +425,10 @@ $div-height: null;
 /*****************/
 
 /**
-* @tags: keyframes
-* @for: add suffix to your keyframes animation
-* @mixin: @include keyframe(animationName, webkit moz o ms spec);
-* @usage:
+* @tags  : keyframes
+* @for   : add suffix to your keyframes animation
+* @mixin : @include keyframe(animationName, webkit moz o ms spec);
+* @usage : 
 * .selector { @include keyframes(block1-visible, webkit ms moz o spec) {
 *		from, 0% {  }
 *		to { }
@@ -458,11 +466,10 @@ $div-height: null;
 /*****************/
 
 /**
-* @tags: debug
-* @for: add red border to element
-* @mixin: @include debug();
-* @usage:
-* .selector { @include debug(); }
+* @tags  : debug
+* @for   : add red border to element
+* @mixin : @include debug();
+* @usage : .selector { @include debug(); }
 */
 
 //Help for debugging
@@ -474,10 +481,9 @@ $div-height: null;
 /*****************/
 
 /**
-* @tags: include padding into the width & height of your element
-* @mixin: @include borderbox();
-* @usage:
-* .selector { @include borderbox(); }
+* @tags  : include padding into the width & height of your element
+* @mixin : @include borderbox();
+* @usage : .selector { @include borderbox(); }
 */
 
 @mixin borderbox {
@@ -489,10 +495,9 @@ $div-height: null;
 /*****************/
 
 /**
-* @tags: css3 transition delay
-* @mixin: @include delay();
-* @usage:
-* .selector { @include delay(0.3s); }
+* @tags  : css3 transition delay
+* @mixin : @include delay();
+* @usage : .selector { @include delay(0.3s); }
 */
 
 @mixin delay ($value) {
@@ -517,10 +522,9 @@ $div-height: null;
 */
 
 /**
-* @tags: grab every font-face file
-* @mixin: @include font-face();
-* @usage:
-* .selector { @include font-face(font-custom-name, '../dir/font-file-name'); } | @include font-face(avenir, '../fonts/avenir-next-lt-pro');
+* @tags  : grab every font-face file
+* @mixin : @include font-face();
+* @usage : .selector { @include font-face(font-custom-name, '../dir/font-file-name'); } | @include font-face(avenir, '../fonts/avenir-next-lt-pro');
 */
 
 $font-url: false !default;
@@ -556,9 +560,8 @@ $font-url: false !default;
 }
 
 /**
-* @tags: arrow
-* @format:
-* .selector(@include arrow(10px, black, up);
+* @tags   : arrow
+* @format : .selector(@include arrow(10px, black, up);
 */
 
 
@@ -595,9 +598,8 @@ $font-url: false !default;
 }
 
 /**
-* @tags: ie js breakpoint fix
-* @format:
-* .selector(@mixin ie-grid(width:60%;));
+* @tags   : ie js breakpoint fix
+* @format : .selector(@mixin ie-grid(width:60%;));
 */
 
 @mixin ie-grid {
@@ -612,9 +614,9 @@ $font-url: false !default;
 
 
 /**
-* @tags: css3 circle
-* @extend: pager button
-* @format:
+* @tags   : css3 circle
+* @extend : pager button
+* @format : 
 * @include circle(width value, height value, background-color);
 */
 
@@ -628,11 +630,9 @@ $font-url: false !default;
 
 
 /**
-* @tags: add any properties in placeholder
-* @format:
-*@include placeholder-color() {your properties}
-* @usage :
-* @include placeholder-color($color: red);
+* @tags   : add any properties in placeholder
+* @format : @include placeholder-color() {your properties}
+* @usage  : @include placeholder-color($color: red);
 */
 
 @mixin placeholder-color($color) { 	
@@ -645,13 +645,9 @@ $font-url: false !default;
 
 
 /**
-* @tags: add any properties in placeholder
-* @format:
-*@include placeholder-content() {your properties}
-* @usage :
-* @include placeholder-content() {
-*    color: yellow;
-* }*
+* @tags   : add any properties in placeholder
+* @format : @include placeholder-content() {your properties}
+* @usage  : @include placeholder-content() { color: yellow; }
 */
 
 @mixin placeholder-content() {
@@ -662,4 +658,21 @@ $font-url: false !default;
 	     	@content;
 	    }
 	}
+}
+
+/*****************/
+
+/**
+* @tags   : css ellipsis
+* @extend : pager button
+* @format : 
+* <div class="pager"></div>
+*/
+
+@mixin truncate($width) {
+	width:	$width;
+	
+	white-space: 	pre;
+	text-overflow:	ellipsis;
+	overflow:		hidden;
 }
