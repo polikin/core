@@ -56,6 +56,8 @@ reference: https://github.com/jhardy/compass-ceaser-easing
 
 The only thing you have to do is to create susy variables and you're good to go!    
 
+http://susy.oddbird.net/
+
 ---
 
 #####How to use Animate.sass
