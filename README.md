@@ -45,7 +45,9 @@ No need to install any gems.
 #####How to use Ceaser mixins
 ---
 
-`@include ceaser-transition(all, 800ms, $easeInQuad);`
+`@include ceaser-transition(all, 800ms, $easeInQuad);`    
+
+reference: https://github.com/jhardy/compass-ceaser-easing
 
 ---
 
