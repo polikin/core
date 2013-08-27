@@ -15,10 +15,10 @@ No need to install any gems.
 
 #####Usage (Compass is needed)
 ---
-`@import "_charcoal-core"` - everything (GetSkeleton Grid, Susy Grid, Ceaser, Custom mixins)    
-`@import "_charcoal-core/src/_susy"` - Susy grid only    
-`@import "_charcoal-core/src/_ceaser"` - CSS3 easing animations only    
-`@import "_charcoal-core/src/_responsive-grid"` - GetSkeleton Grid only (Refer to https://github.com/theresponsiveness/GetSkeleton1200-or-960)    
+`@import "_core"` - everything (GetSkeleton Grid, Susy Grid, Ceaser, Custom mixins)    
+`@import "_core/src/_susy"` - Susy grid only    
+`@import "_core/src/_ceaser"` - CSS3 easing animations only    
+`@import "_core/src/_responsive-grid"` - GetSkeleton Grid only (Refer to https://github.com/theresponsiveness/GetSkeleton1200-or-960)    
 
 ---
 
@@ -35,10 +35,10 @@ No need to install any gems.
 `keyframes`    
 `debug`    
 `font-face`    
-`triangle`    
+`arrow`    
 `circle`    
 `placeholder color`  
-
+`truncate`
 ---
 
 #####How to use Ceaser mixins
