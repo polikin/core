@@ -4,7 +4,7 @@ core
 Here's some mixins that I created or integrate from other people. It's very useful!
 Obviously, you can add or modified those mixins for your own code.    
 
-Every librairie is called by mixin. So, you can call `@import "_charcoal-core"` and until you include a mixin, nothing will be output.
+Every librairie is called by mixin. So, you can call `@import "_core"` and until you include a mixin, nothing will be output.
 
 Now with:    
 - Susy Responsive Grid (http://susy.oddbird.net/)    
