@@ -26,6 +26,8 @@ $core: null !default;
 =========
 */
 
+
+
 /**
 * @tags  : media queries
 * @mixin : @include media-query(value) { attribut }
@@ -180,96 +182,27 @@ $core: null !default;
 */
 
 $div: false !default;
-$div-height: null;
+$div-height: null !default;
 
-@mixin center-absolute($name: null, $ext: null, $repeat: no-repeat, $bgcolor:transparent, $important: null, $width: null, $height:null, $top: 0, $right: 0, $bottom: 0, $left: 0, $pos:absolute) {
+@mixin center-absolute($name: null, $ext: null, $repeat: no-repeat, $bgcolor:transparent, $important: null, $width: null, $height:null, $reset:false, $top: 0, $right: 0, $bottom: 0, $left: 0, $margin-left: auto, $pos:absolute) {
 	
-	position:	$pos;
 	
-	@if $name and $ext !=  null { /* @if background image is call */
-		@if $top > 0 {
-			top:		$top;
-			right:		0;
-			bottom:		auto;
-			left:		0;
-		}@elseif $right > 0 {
-			top:		0;
-			right:		$right;
-			bottom:		0;
-			left:		auto;			
-		}@elseif $bottom > 0 {
-			top:		auto;
-			right:		0;
-			bottom:		$bottom;
-			left:		0;			
-		}@elseif $left > 0 {
-			top:		0;
-			right:		auto;
-			bottom:		0;
-			left:		$left;			
-		}@else {
-			top:		$top;
-			right:		$right;
-			bottom:		$bottom;
-			left:		$left;
-		}
+	
+	@if $reset == true {		
+		position : $pos;
+		top      : $top;
+		right    : $right;
+		bottom   : $bottom;
+		left     : $left;
 		
-		margin:	auto;
+		margin-left : $margin-left;
 		
-		height: image-height('#{$name}.#{$ext}');
-		width: 	image-width('#{$name}.#{$ext}');
-		
-		@if $core == true { /* @if we need image from the core | use this variable for custom charcoal skin */
-			height: image-height('../../../../charcoal/modules/admin/assets/images/#{$name}.#{$ext}');
-			width: 	image-width('../../../../charcoal/modules/admin/assets/images/#{$name}.#{$ext}');
-		}@else { /* config.rb relative assets */
-			height: image-height('#{$name}.#{$ext}');
-			width: 	image-width('#{$name}.#{$ext}');
-		}
-		
-		@if $core == true { /* @if we need image from the core | use this variable for custom charcoal skin */
-			background: url('../../../../charcoal/modules/admin/assets/images/#{$name}.#{$ext}') $repeat $bgcolor $important;
-		}@elseif $core == module { /* (get-asset-images) charcoal function | take image from the modules define into the config.json */
-			background: url('get-asset-images?a=#{$name}.#{$ext}') $repeat $bgcolor $important;
-		}@else { /* config.rb relative assets */
-			background: image-url('#{$name}.#{$ext}') $repeat $bgcolor $important;
-		}
-		
-		.ie7 & {
-			left:		50%;
-			top:		$top;
-		
-			@if $top == 50% {
-				margin-top:  - image-height('#{$name}.#{$ext}') / 2;
-			}
-		
-			margin-left: - image-width('#{$name}.#{$ext}') / 2;
-			height: image-height('#{$name}.#{$ext}');
-			width: 	image-width('#{$name}.#{$ext}');
-		}
+		width : $width;
 		
 	}@else {
-		@if $div-height ==  variable { /* @if div height is unknown */
-			left:		50%;
-			//top:		$top;
-			@if $top {
-				top: $top;
-			}@elseif $top == 50% { /* center vertically with height value */
-				margin-top:  - $height / 2;
-			}@elseif $bottom > 0 {
-				left: 	50%;
-				top:	auto;
-				bottom: $bottom;
-			}
-
-			width:	$width;
-			height:	$height;
-
-			margin-left:	- $width/2;
+		position:	$pos;
 		
-			z-index:	9999;
-			
-		}@else { /* @if div height is know */
+		@if $name and $ext !=  null { /* @if background image is call || center vertical & horizontal */
 			@if $top > 0 {
 				top:		$top;
 				right:		0;
@@ -296,26 +229,110 @@ $div-height: null;
 				bottom:		$bottom;
 				left:		$left;
 			}
-			margin:		auto;
-		}	
 		
-		width: 	$width;
-		height:	$height;
+			margin:	auto;
 		
-		.ie7 & {
-			position:	$pos;
-			top:		$top;
-			left:		50%;
+			height: image-height('#{$name}.#{$ext}');
+			width: 	image-width('#{$name}.#{$ext}');
+		
+			@if $core == true { /* @if we need image from the core | use this variable for custom charcoal skin */
+				height: image-height('../../../../charcoal/modules/admin/assets/images/#{$name}.#{$ext}');
+				width: 	image-width('../../../../charcoal/modules/admin/assets/images/#{$name}.#{$ext}');
+			}@else { /* config.rb relative assets */
+				height: image-height('#{$name}.#{$ext}');
+				width: 	image-width('#{$name}.#{$ext}');
+			}
+		
+			@if $core == true { /* @if we need image from the core | use this variable for custom charcoal skin */
+				background: url('../../../../charcoal/modules/admin/assets/images/#{$name}.#{$ext}') $repeat $bgcolor $important;
+			}@elseif $core == module { /* (get-asset-images) charcoal function | take image from the modules define into the config.json */
+				background: url('get-asset-images?a=#{$name}.#{$ext}') $repeat $bgcolor $important;
+			}@else { /* config.rb relative assets */
+				background: image-url('#{$name}.#{$ext}') $repeat $bgcolor $important;
+			}
+		
+			.ie7 & {
+				left:		50%;
+				top:		$top;
+		
+				@if $top == 50% {
+					margin-top:  - image-height('#{$name}.#{$ext}') / 2;
+				}
+		
+				margin-left: - image-width('#{$name}.#{$ext}') / 2;
+				height: image-height('#{$name}.#{$ext}');
+				width: 	image-width('#{$name}.#{$ext}');
+			}
+		
+		}@else {
+			@if $div-height ==  variable { /* @if div height is unknown */
+				left:		50%;
+				//top:		$top;
+				@if $top {
+					top: $top;
+				}@elseif $top == 50% { /* center vertically with height value */
+					margin-top:  - $height / 2;
+				}@elseif $bottom > 0 {
+					left: 	50%;
+					top:	auto;
+					bottom: $bottom;
+				}
 
-			width:	$width;
+				width:	$width;
+				height:	$height;
+
+				margin-left:	- $width/2;
+		
+				z-index:	9999;
+			
+			}@else { /* @if div height is know */
+				@if $top > 0 {
+					top:		$top;
+					right:		0;
+					bottom:		auto;
+					left:		0;
+				}@elseif $right > 0 {
+					top:		0;
+					right:		$right;
+					bottom:		0;
+					left:		auto;			
+				}@elseif $bottom > 0 {
+					top:		auto;
+					right:		0;
+					bottom:		$bottom;
+					left:		0;			
+				}@elseif $left > 0 {
+					top:		0;
+					right:		auto;
+					bottom:		0;
+					left:		$left;			
+				}@else {
+					top:		$top;
+					right:		$right;
+					bottom:		$bottom;
+					left:		$left;
+				}
+				margin:		auto;
+			}	
+		
+			width: 	$width;
 			height:	$height;
+		
+			.ie7 & {
+				position:	$pos;
+				top:		$top;
+				left:		50%;
 
-			margin-left:	- $width/2;
+				width:	$width;
+				height:	$height;
+
+				margin-left:	- $width/2;
 		
-			z-index:	9999;
+				z-index:	9999;
+			}
+		
 		}
-		
-	}
+	}	
 }
 
 
@@ -570,30 +587,38 @@ $font-url: false !default;
 		width: 		0; 
 		height: 	0; 
 	
-		border-left: 	$value solid transparent;
-		border-right: 	$value solid transparent;
-		border-bottom: 	$value solid $color;
+		border:{
+			left: $value solid transparent;
+			right: $value solid transparent;
+			bottom: $value solid $color;
+		};	
 	}@elseif $direction == right {
 		width: 		0; 
-		height: 	0; 
-	
-		border-left: 	$value solid transparent;
-		border-top: 	$value solid transparent;
-		border-bottom: 	$value solid $color;
+		height: 	0;
+		
+		border:{
+			top: $value solid transparent;
+			bottom: $value solid transparent;
+			left: $value solid $color;
+		};		
 	}@if $direction == down {
 		width: 		0; 
 		height: 	0; 
 	
-		border-left: 	$value solid transparent;
-		border-right: 	$value solid transparent;
-		border-top: 	$value solid $color;
+		border:{
+			left: $value solid transparent;
+			right: $value solid transparent;
+			top: $value solid $color;
+		};	
 	}@if $direction == left {
 		width: 		0; 
 		height: 	0; 
 	
-		border-top: 	$value solid transparent;
-		border-right: 	$value solid transparent;
-		border-bottom: 	$value solid $color;
+		border:{
+			top: $value solid transparent;
+			bottom: $value solid transparent;
+			right: $value solid $color;
+		};	
 	}
 }
 
@@ -669,7 +694,7 @@ $font-url: false !default;
 * <div class="pager"></div>
 */
 
-@mixin truncate($width) {
+@mixin truncate($width:null) {
 	width:	$width;
 	
 	white-space: 	pre;
