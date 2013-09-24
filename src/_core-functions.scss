@@ -92,23 +92,46 @@ $core: null !default;
 @mixin backgroundimage($name, $ext, $pos:top left, $repeat: no-repeat, $bgcolor:transparent, $important:null, $size: null) {	
 	@if $core == true {
 		background: url('../../../../charcoal/modules/admin/assets/images/#{$name}.#{$ext}') $pos $repeat $bgcolor $important;
+		
+		@if $ext == svg {
+			.no-svg & { background: url('../../../../charcoal/modules/admin/assets/images/#{$name}.png') $pos $repeat $bgcolor $important; }
+		}
+		
 	}@elseif $core == module {
 		background: url('get-asset-images?a=#{$name}.#{$ext}') $pos $repeat $bgcolor $important;
+		
+		@if $ext == svg {
+			.no-svg & { background: url('get-asset-images?a=#{$name}.png') $pos $repeat $bgcolor $important; }
+		}
+		
 	}@else {
 		background: image-url('#{$name}.#{$ext}') $pos $repeat $bgcolor $important;
+		
+		@if $ext == svg {
+			.no-svg & { background: image-url('#{$name}.png') $pos $repeat $bgcolor $important; }
+		}
 	}
 	
 	@if $size == true {
 		@if $core == true {
-			height: image-height('../../../../charcoal/modules/admin/assets/images/#{$name}.#{$ext}');
-			width: 	image-width('../../../../charcoal/modules/admin/assets/images/#{$name}.#{$ext}');
+			height: image-height('../../../../charcoal/modules/admin/assets/images/#{$name}.png');
+			width: 	image-width('../../../../charcoal/modules/admin/assets/images/#{$name}.png');
 			
-			background: url('../../../../charcoal/modules/admin/assets/images/#{$name}.#{$ext}') $pos $repeat $bgcolor $important;
+			//background: url('../../../../charcoal/modules/admin/assets/images/#{$name}.#{$ext}') $pos $repeat $bgcolor $important;
+			
+			@if $ext == svg {
+				.no-svg & { background: url('../../../../charcoal/modules/admin/assets/images/#{$name}.png') $pos $repeat $bgcolor $important; }
+			}
+			
 		}@else {
-			height: image-height('#{$name}.#{$ext}');
-			width: 	image-width('#{$name}.#{$ext}');
+			height: image-height('#{$name}.png');
+			width: 	image-width('#{$name}.png');
 			
-			background: image-url('#{$name}.#{$ext}') $pos $repeat $bgcolor $important;
+			//background: image-url('#{$name}.#{$ext}') $pos $repeat $bgcolor $important;
+			
+			@if $ext == svg {
+				.no-svg & { background: image-url('#{$name}.png') $pos $repeat $bgcolor $important; }
+			}
 		}
 	}
 }
