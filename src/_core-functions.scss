@@ -128,10 +128,6 @@ $core: null !default;
 			width: 	image-width('#{$name}.png');
 			
 			//background: image-url('#{$name}.#{$ext}') $pos $repeat $bgcolor $important;
-			
-			@if $ext == svg {
-				.no-svg & { background: image-url('#{$name}.png') $pos $repeat $bgcolor $important; }
-			}
 		}
 	}
 }
