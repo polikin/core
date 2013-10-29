@@ -13,6 +13,10 @@ Now with:
 
 No need to install any gems.
 
+#####Available on Bower
+bower search core
+
+---
 #####Usage (Compass is needed)
 ---
 `@import "_core"` - everything (GetSkeleton Grid, Susy Grid, Ceaser, Custom mixins)    
