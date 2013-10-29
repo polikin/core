@@ -89,45 +89,73 @@ $core: null !default;
 
 //$module: false !default;
 
-@mixin backgroundimage($name, $ext, $pos:top left, $repeat: no-repeat, $bgcolor:transparent, $important:null, $size: null) {	
+@mixin backgroundimage($name, $ext, $pos:top left, $repeat: no-repeat, $bgcolor:transparent, $bgsize: null, $important:null, $size: null, $height: null, $fallback:null) {	
 	@if $core == true {
 		background: url('../../../../charcoal/modules/admin/assets/images/#{$name}.#{$ext}') $pos $repeat $bgcolor $important;
 		
 		@if $ext == svg {
-			.no-svg & { background: url('../../../../charcoal/modules/admin/assets/images/#{$name}.png') $pos $repeat $bgcolor $important; }
-		}
+			@if $fallback == false {
+				//no png fallback
+			}@else {
+				.no-svg & { background: image-url('#{$name}.png') $pos $repeat $bgcolor $important; }
+			}
+		}	
+		
+		@if $bgsize != null {
+			background-size: $bgsize;
+		}	
 		
 	}@elseif $core == module {
 		background: url('get-asset-images?a=#{$name}.#{$ext}') $pos $repeat $bgcolor $important;
 		
 		@if $ext == svg {
-			.no-svg & { background: url('get-asset-images?a=#{$name}.png') $pos $repeat $bgcolor $important; }
-		}
+			@if $fallback == false {
+				//no png fallback
+			}@else {
+				.no-svg & { background: image-url('#{$name}.png') $pos $repeat $bgcolor $important; }
+			}
+		}	
+		
+		@if $bgsize != null {
+			background-size: $bgsize;
+		}	
 		
 	}@else {
 		background: image-url('#{$name}.#{$ext}') $pos $repeat $bgcolor $important;
 		
 		@if $ext == svg {
-			.no-svg & { background: image-url('#{$name}.png') $pos $repeat $bgcolor $important; }
+			@if $fallback == false {
+				//no png fallback
+			}@else {
+				.no-svg & { background: image-url('#{$name}.png') $pos $repeat $bgcolor $important; }
+			}
 		}
+		
+		@if $bgsize != null {
+			background-size: $bgsize;
+		}		
 	}
 	
 	@if $size == true {
 		@if $core == true {
-			height: image-height('../../../../charcoal/modules/admin/assets/images/#{$name}.png');
-			width: 	image-width('../../../../charcoal/modules/admin/assets/images/#{$name}.png');
+			height: image-height('../../../../charcoal/modules/admin/assets/images/#{$name}.#{$ext}');
+			width: 	image-width('../../../../charcoal/modules/admin/assets/images/#{$name}.#{$ext}');
 			
-			//background: url('../../../../charcoal/modules/admin/assets/images/#{$name}.#{$ext}') $pos $repeat $bgcolor $important;
-			
-			@if $ext == svg {
-				.no-svg & { background: url('../../../../charcoal/modules/admin/assets/images/#{$name}.png') $pos $repeat $bgcolor $important; }
-			}
-			
-		}@else {
+		}@elseif $ext == svg {
 			height: image-height('#{$name}.png');
 			width: 	image-width('#{$name}.png');
-			
-			//background: image-url('#{$name}.#{$ext}') $pos $repeat $bgcolor $important;
+		}
+		@else {
+			height: image-height('#{$name}.#{$ext}');
+			width: 	image-width('#{$name}.#{$ext}');
+		}
+	}
+	
+	@if $height == true {
+		height: image-height('#{$name}.#{$ext}');
+		
+		@if $ext == svg {
+			height: image-height('#{$name}.png');
 		}
 	}
 }
@@ -366,28 +394,27 @@ $div-height: null !default;
 
 
 @mixin prefixer ($property, $value, $prefixes: webkit ms moz o spec) {
+	@each $prefix in $prefixes {
 
-  @each $prefix in $prefixes {
-
-    @if $prefix == webkit {
-      -webkit-#{$property}: $value;
-    }
-    @else if $prefix == moz {
-      -moz-#{$property}: $value;
-    }
-    @else if $prefix == ms {
-      -ms-#{$property}: $value;
-    }
-    @else if $prefix == o {
-      -o-#{$property}: $value;
-    }
-    @else if $prefix == spec {
-      #{$property}: $value;
-    }
-    @else {
-      @warn "Unrecognized prefix: #{$prefix}";
-    }
-  }
+		@if $prefix == webkit {
+			-webkit-#{$property}: $value;
+		}
+		@else if $prefix == moz {
+			-moz-#{$property}: $value;
+		}
+		@else if $prefix == ms {
+			-ms-#{$property}: $value;
+		}
+		@else if $prefix == o {
+			-o-#{$property}: $value;
+		}
+		@else if $prefix == spec {
+			#{$property}: $value;
+		}
+		@else {
+			@warn "Unrecognized prefix: #{$prefix}";
+		}
+	}
 }
 
 /*****************/
