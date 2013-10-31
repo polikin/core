@@ -426,7 +426,7 @@ $div-height: null !default;
 * @usage : .selector { @@include translate(translate3d, $y:-20); }
 */
 
-@mixin translate($translation:null, $x:0, $y:0, $z:0, $property: transform) {
+@mixin translate($translation:null, $x:0, $y:0, $z:0, $property: transform, $fallback:true) {
 	@if $translation == translate3d {
 		-webkit-#{$property} : translate3d($x#{px}, $y#{px}, $z#{px});
 		-moz-#{$property}    : translate3d($x#{px}, $y#{px}, $z#{px});
@@ -444,18 +444,22 @@ $div-height: null !default;
 		-o-#{$property}      : translateY($y#{px});
 	}
 	
-	@if $x > 0 {
-		.no-csstransforms & { left: $x#{px}; }
-	}@else if $x < 0 {
-		.no-csstransforms & { left: $x#{px}; }
-	}
+	@if $fallback == false {
+	    //no fallback
+	}@else {
+	    @if $x > 0 {
+			.no-csstransforms & { left: $x#{px}; }
+		}@else if $x < 0 {
+			.no-csstransforms & { left: $x#{px}; }
+		}
 	
-	/* translate on Y axis */
+		/* translate on Y axis */
 	
-	@if $y > 0 {
-		.no-csstransforms & { top: $y#{px}; }
-	}@else if $y < 0 {
-		.no-csstransforms & { top: $y#{px}; }
+		@if $y > 0 {
+			.no-csstransforms & { top: $y#{px}; }
+		}@else if $y < 0 {
+			.no-csstransforms & { top: $y#{px}; }
+		}
 	}
 }
 
