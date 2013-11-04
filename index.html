@@ -1,0 +1,121 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Core by polikin</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>Core</h1>
+        <p></p>
+
+        <p class="view"><a href="https://github.com/polikin/core">View the Project on GitHub <small>polikin/core</small></a></p>
+
+
+        <ul>
+          <li><a href="https://github.com/polikin/core/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/polikin/core/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/polikin/core">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <h1>
+<a name="core" class="anchor" href="#core"><span class="octicon octicon-link"></span></a>core</h1>
+
+<h5>
+<a name="-the-docs-will-come-soon" class="anchor" href="#-the-docs-will-come-soon"><span class="octicon octicon-link"></span></a>* The docs will come soon!</h5>
+
+<p>Every librairie is called by mixin. So, you can call <code>@import "_core"</code> and until you include a mixin, nothing will be output.</p>
+
+<p>Now with:    </p>
+
+<ul>
+<li>Susy Responsive Grid (<a href="http://susy.oddbird.net/">http://susy.oddbird.net/</a>)<br>
+</li>
+<li>Ceaser CSS3 Animations (<a href="https://github.com/jhardy/compass-ceaser-easing">https://github.com/jhardy/compass-ceaser-easing</a>)<br>
+</li>
+<li>Animate.sass (<a href="https://github.com/polikin/animate.sass">https://github.com/polikin/animate.sass</a>)<br>
+</li>
+<li>GetSkeleton Grid (<a href="https://github.com/theresponsiveness/GetSkeleton1200-or-960">https://github.com/theresponsiveness/GetSkeleton1200-or-960</a> &amp; <a href="http://getskeleton.com/">http://getskeleton.com/</a>)<br>
+</li>
+</ul><p>No need to install any gems.</p>
+
+<h5>
+<a name="available-on-bower" class="anchor" href="#available-on-bower"><span class="octicon octicon-link"></span></a>Available on Bower</h5>
+
+<pre><code>bower install core
+</code></pre>
+
+<hr><h5>
+<a name="why-should-i-use-core" class="anchor" href="#why-should-i-use-core"><span class="octicon octicon-link"></span></a>Why should I use Core?</h5>
+
+<p>Well, the main idea here is that Core import some libs that we probably use everytime in our project. 
+So, with Core you don't have to install any gems. Everything is up to date and ready to be import. 
+Per example. You want to use Susy for your project. Then, your co-worker has need to work on the same project. 
+Until Core, he should install the gem on his computer. 
+If not, the compilation failed. With Core, you drop the folder <code>core</code> in your project and you're good to go.</p>
+
+<hr><h5>
+<a name="usage-compass-is-needed" class="anchor" href="#usage-compass-is-needed"><span class="octicon octicon-link"></span></a>Usage (Compass is needed)</h5>
+
+<hr><p><code>@import "_core"</code> - everything (GetSkeleton Grid, Susy Grid, Ceaser, Custom mixins)<br><code>@import "_core/src/_susy"</code> - Susy grid only<br><code>@import "_core/src/_ceaser"</code> - CSS3 easing animations only<br><code>@import "_core/src/_responsive-grid"</code> - GetSkeleton Grid only (Refer to <a href="https://github.com/theresponsiveness/GetSkeleton1200-or-960">https://github.com/theresponsiveness/GetSkeleton1200-or-960</a>)    </p>
+
+<hr><h5>
+<a name="type-of-mixins--file-_core-functionsscss" class="anchor" href="#type-of-mixins--file-_core-functionsscss"><span class="octicon octicon-link"></span></a>Type of mixins: | file: _core-functions.scss</h5>
+
+<hr><p><code>media-query</code><br><code>image size</code><br><code>image height</code><br><code>image width</code><br><code>background-image</code><br><code>center absolute</code><br><code>prefix, suffix, prefix &amp; suffix</code><br><code>keyframes</code><br><code>debug</code><br><code>font-face</code><br><code>arrow</code><br><code>circle</code><br><code>placeholder color</code><br><code>truncate</code>  </p>
+
+<hr><h5>
+<a name="how-to-use-ceaser-mixins" class="anchor" href="#how-to-use-ceaser-mixins"><span class="octicon octicon-link"></span></a>How to use Ceaser mixins</h5>
+
+<hr><p><code>@include ceaser-transition(all, 800ms, $easeInQuad);</code>    </p>
+
+<p>reference: <a href="https://github.com/jhardy/compass-ceaser-easing">https://github.com/jhardy/compass-ceaser-easing</a></p>
+
+<hr><h5>
+<a name="how-to-use-susy" class="anchor" href="#how-to-use-susy"><span class="octicon octicon-link"></span></a>How to use Susy</h5>
+
+<hr><p>The only thing you have to do is to create susy variables and you're good to go!    </p>
+
+<p><a href="http://susy.oddbird.net/">http://susy.oddbird.net/</a></p>
+
+<hr><h5>
+<a name="how-to-use-animatesass" class="anchor" href="#how-to-use-animatesass"><span class="octicon octicon-link"></span></a>How to use Animate.sass</h5>
+
+<hr><p><code>@import "animate/_shared";</code><br><code>@import "animate/_animations";</code>    </p>
+
+<p>then    </p>
+
+<p><code>@include animations(fading-entrances);</code> - entrances animations family<br>
+or<br><code>@include animations(fading-entrances/fadeInRight);</code> - specific animation     </p>
+
+<p>reference: <a href="https://github.com/polikin/animate.sass">https://github.com/polikin/animate.sass</a></p>
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/polikin">polikin</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+              <script type="text/javascript">
+            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+          </script>
+          <script type="text/javascript">
+            try {
+              var pageTracker = _gat._getTracker("UA-43641133-1");
+            pageTracker._trackPageview();
+            } catch(err) {}
+          </script>
+
+  </body>
+</html>
