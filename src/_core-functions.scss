@@ -34,19 +34,19 @@ $core: null !default;
 * @usage : .selector @include media-query(320px) { width: 60%; }; }
 */
 
-@mixin media-query($value, $operator: 'min-width', $query: 'screen') {
+@mixin core-media-query($value, $operator: 'min-width', $query: 'screen') {
 	@media #{$query} and (#{$operator}: #{$value}px) {
 		@content;
 	}
 }
 
-@mixin media-query-max($value, $operator: 'max-width', $query: 'screen') {
+@mixin core-media-query-max($value, $operator: 'max-width', $query: 'screen') {
 	@media #{$query} and (#{$operator}: #{$value}px) {
 		@content;
 	}
 }
 
-@mixin media-query-minmax($value-min, $value-max, $operator: 'min-width', $operator2: 'max-width', $query: 'screen') {
+@mixin core-media-query-minmax($value-min, $value-max, $operator: 'min-width', $operator2: 'max-width', $query: 'screen') {
 	@media #{$query} and (#{$operator}: #{$value-min}px) and (#{$operator2}: #{$value-max}px) {
 		@content;
 	}
@@ -59,7 +59,7 @@ $core: null !default;
 * @usage : .selector { @include position(absolute, 0, 0, 0, 0); }
 */
 
-@mixin position ($type, $top, $right, $bottom, $left) {
+@mixin core-position ($type, $top, $right, $bottom, $left) {
 	position: 	$type;
     top: 		$top;
     right: 		$right;
@@ -73,7 +73,7 @@ $core: null !default;
 * @mixin : @include size();
 * @usage : .selector { @include size(104, 104); }
 */
-@mixin size($height, $width) {
+@mixin core-size($height, $width) {
 	height: #{$height}px;
 	width:	#{$width}px;
 }
@@ -89,7 +89,7 @@ $core: null !default;
 
 //$module: false !default;
 
-@mixin backgroundimage($name, $ext, $pos:top left, $repeat: no-repeat, $bgcolor:transparent, $bgsize: null, $important:null, $size: null, $height: null, $fallback:null) {	
+@mixin core-backgroundimage($name, $ext, $pos:top left, $repeat: no-repeat, $bgcolor:transparent, $bgsize: null, $important:null, $size: null, $height: null, $fallback:null) {	
 	@if $core == true {
 		background: url('../../../../charcoal/modules/admin/assets/images/#{$name}.#{$ext}') $pos $repeat $bgcolor $important;
 		
@@ -171,7 +171,7 @@ $core: null !default;
 * @usage   : .selector { @include image-height(img-name, png); }
 */
 
-@mixin image-height($name, $ext) {
+@mixin core-image-height($name, $ext) {
 	@if $core == true {
 		height: image-height('../../../../charcoal/modules/admin/assets/images/#{$name}.#{$ext}');
 		
@@ -190,7 +190,7 @@ $core: null !default;
 * @usage   : .selector { @include image-width(img-name, png); }
 */
 
-@mixin image-width($name, $ext) {
+@mixin core-image-width($name, $ext) {
 	@if $core == true {
 		width: 	image-width('../../../../charcoal/modules/admin/assets/images/#{$name}.#{$ext}');
 	}@else {
@@ -208,7 +208,7 @@ $core: null !default;
 * @usage   : .selector { @include image-size(img-name, png); }
 */
 
-@mixin image-size($name, $ext) {
+@mixin core-image-size($name, $ext) {
 	@if $core == true {
 		height: image-height('../../../../charcoal/modules/admin/assets/images/#{$name}.#{$ext}');
 		width: 	image-width('../../../../charcoal/modules/admin/assets/images/#{$name}.#{$ext}');
@@ -231,7 +231,7 @@ $core: null !default;
 $div: false !default;
 $div-height: null !default;
 
-@mixin center-absolute($name: null, $ext: null, $repeat: no-repeat, $bgcolor:transparent, $important: null, $width: null, $height:null, $reset:false, $top: 0, $right: 0, $bottom: 0, $left: 0, $margin-left: auto, $pos:absolute) {
+@mixin core-center-absolute($name: null, $ext: null, $repeat: no-repeat, $bgcolor:transparent, $important: null, $width: null, $height:null, $reset:false, $top: 0, $right: 0, $bottom: 0, $left: 0, $margin-left: auto, $pos:absolute) {
 	
 	
 	
@@ -393,7 +393,7 @@ $div-height: null !default;
 */
 
 
-@mixin prefixer ($property, $value, $prefixes: webkit ms moz o spec) {
+@mixin core-prefixer ($property, $value, $prefixes: webkit ms moz o spec) {
 	@each $prefix in $prefixes {
 
 		@if $prefix == webkit {
@@ -472,7 +472,7 @@ $div-height: null !default;
 * @usage : .selector { @include prefix-suffix(attribut, value, webkit ms moz o spec); } || @include prefixer(background-size, 100%, webkit ms moz o spec);
 */
 
-@mixin prefix-suffix ($property, $value, $prefixes: webkit ms moz o spec) {
+@mixin core-prefix-suffix ($property, $value, $prefixes: webkit ms moz o spec) {
 
   @each $prefix in $prefixes {
 
@@ -506,7 +506,7 @@ $div-height: null !default;
 * @usage : .selector { @include suffix(attribut, value, webkit ms moz o spec); } || @include suffix(background-size, 100%, webkit ms moz o spec);
 */
 
-@mixin suffix ($property, $value, $prefixes: webkit ms moz o spec) {
+@mixin core-suffix ($property, $value, $prefixes: webkit ms moz o spec) {
 
   @each $prefix in $prefixes {
 
@@ -544,7 +544,7 @@ $div-height: null !default;
 *	}
 */
 
-@mixin keyframes ($property, $prefixes: webkit ms moz o spec) {
+@mixin core-keyframes ($property, $prefixes: webkit ms moz o spec) {
 
   @each $prefix in $prefixes {
 
@@ -595,7 +595,7 @@ $div-height: null !default;
 * @usage : .selector { @include borderbox(); }
 */
 
-@mixin borderbox {
+@mixin core-borderbox {
 	box-sizing: 		border-box;
 	-webkit-box-sizing:	border-box;
 	-moz-box-sizing: 	border-box;
@@ -609,14 +609,14 @@ $div-height: null !default;
 * @usage : .selector { @include delay(0.3s); }
 */
 
-@mixin delay ($value) {
+@mixin core-delay ($value) {
 	transition-delay: $value;
 	-moz-transition-delay: $value; /* Firefox 4 */
 	-webkit-transition-delay: $value; /* Safari and Chrome */
 	-o-transition-delay: $value; /* Opera */
 }
 
-@mixin animation_delay ($value) {
+@mixin core-animation_delay ($value) {
 	animation-delay: $value;
 	-moz-animation-delay: $value; /* Firefox 4 */
 	-webkit-animation-delay: $value; /* Safari and Chrome */
@@ -638,7 +638,7 @@ $div-height: null !default;
 
 $font-url: false !default;
 
-@mixin font-face($font-family, $file-path, $weight: normal, $style: normal ) {
+@mixin core-font-face($font-family, $file-path, $weight: normal, $style: normal ) {
 	@if $font-url == true {
 		@font-face {
 			font-family: $font-family;
@@ -674,7 +674,7 @@ $font-url: false !default;
 */
 
 
-@mixin arrow($value, $color, $direction) {
+@mixin core-arrow($value, $color, $direction) {
 	@if $direction == up {
 		width: 		0; 
 		height: 	0; 
@@ -719,7 +719,7 @@ $font-url: false !default;
 * @format : .selector(@mixin ie-grid(width:60%;));
 */
 
-@mixin ie-grid {
+@mixin core-ie-grid {
 	.is960 &,
 	.is1024 &,
 	.is1140 & {
@@ -737,7 +737,7 @@ $font-url: false !default;
 * @include circle(width value, height value, background-color);
 */
 
-@mixin circle($circle-size, $color) {
+@mixin core-circle($circle-size, $color) {
 	width: 		$circle-size; 
 	height: 	$circle-size; 
 	background:	$color;
@@ -752,7 +752,7 @@ $font-url: false !default;
 * @usage  : @include placeholder-color($color: red);
 */
 
-@mixin placeholder-color($color) { 	
+@mixin core-placeholder-color($color) { 	
 	@each $prefix in "::-webkit-input", ":moz", "::-moz", ":-ms-input" {
 	    #{$prefix}-placeholder {
 	     	color: $color;	
@@ -767,7 +767,7 @@ $font-url: false !default;
 * @usage  : @include placeholder-content() { color: yellow; }
 */
 
-@mixin placeholder-content() {
+@mixin core-placeholder-content() {
  	
 	@each $prefix in "::-webkit-input", ":moz", "::-moz", ":-ms-input" {
 	    #{$prefix}-placeholder {
@@ -786,10 +786,58 @@ $font-url: false !default;
 * <div class="pager"></div>
 */
 
-@mixin truncate($width:null) {
+@mixin core-truncate($width:null) {
 	width:	$width;
 	
 	white-space: 	pre;
 	text-overflow:	ellipsis;
 	overflow:		hidden;
 }
+
+/*****************/
+
+/*****************/
+
+/**
+* @tags  : css2 translation with fallback
+* @for   : add fallback to your transitions
+* @mixin : @include translate();
+* @usage : .selector { @@include translate(translate3d, $y:-20); }
+*/
+
+@mixin core-translate($translation:null, $x:0, $y:0, $z:0, $property: transform, $fallback:true) {
+	@if $translation == translate3d {
+		-webkit-#{$property} : translate3d($x#{px}, $y#{px}, $z#{px});
+		-moz-#{$property}    : translate3d($x#{px}, $y#{px}, $z#{px});
+		-ms-#{$property}     : translate3d($x#{px}, $y#{px}, $z#{px});
+		-o-#{$property}      : translate3d($x#{px}, $y#{px}, $z#{px});		
+	}@else if $translation == translateX {
+		-webkit-#{$property} : translateX($x#{px});
+		-moz-#{$property}    : translateX($x#{px});
+		-ms-#{$property}     : translateX($x#{px});
+		-o-#{$property}      : translateX($x#{px});
+	}@else if $translation == translateY {
+		-webkit-#{$property} : translateY($y#{px});
+		-moz-#{$property}    : translateY($y#{px});
+		-ms-#{$property}     : translateY($y#{px});
+		-o-#{$property}      : translateY($y#{px});
+	}
+	
+	@if $fallback == true {
+		@if $x > 0 {
+			.no-csstransforms & { left: $x#{px}; }
+		}@else if $x < 0 {
+			.no-csstransforms & { left: $x#{px}; }
+		}
+
+		/* translate on Y axis */
+
+		@if $y > 0 {
+			.no-csstransforms & { top: $y#{px}; }
+		}@else if $y < 0 {
+			.no-csstransforms & { top: $y#{px}; }
+		}
+	}
+}
+
+/*****************/
