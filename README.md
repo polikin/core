@@ -20,6 +20,14 @@ No need to install any gems.
 ```
 bower install core
 ```
+---
+#####Why should I use Core?    
+
+Well, the main idea here is that Core import some libs that we probably use everytime in our project. 
+So, with Core you don't have to install any gems. Everything is up to date and ready to be import. 
+Per example. You want to use Susy for your project. Then, your co-worker has need to work on the same project. 
+Until Core, he should install the gem on his computer. 
+If not, the compilation failed. With Core, you drop the folder `core` in your project and you're good to go.
 
 ---
 #####Usage (Compass is needed)
