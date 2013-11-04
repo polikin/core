@@ -11,6 +11,7 @@ Every librairie is called by mixin. So, you can call `@import "_core"` and until
 Now with:    
 - Susy Responsive Grid (http://susy.oddbird.net/)    
 - Ceaser CSS3 Animations (https://github.com/jhardy/compass-ceaser-easing)    
+- Animate.sass (https://github.com/polikin/animate.sass)   
 - GetSkeleton Grid (https://github.com/theresponsiveness/GetSkeleton1200-or-960 & http://getskeleton.com/)    
 
 No need to install any gems.
@@ -80,4 +81,4 @@ then
 or    
 `@include animations(fading-entrances/fadeInRight);` - specific animation     
 
-reference: https://github.com/theresponsiveness/animate.sass
+reference: https://github.com/polikin/animate.sass
