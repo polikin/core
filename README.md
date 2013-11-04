@@ -16,7 +16,9 @@ Now with:
 No need to install any gems.
 
 #####Available on Bower
-`bower search core`
+```
+bower install core
+```
 
 ---
 #####Usage (Compass is needed)
