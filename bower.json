@@ -1,0 +1,23 @@
+{
+  "name": "core",
+  "version": "0.0.3",
+  "authors": [
+    "_polikin <tumblr@polikin.ca>"
+  ],
+  "description": "Well, the main idea here is that Core import some libs that we probably use everytime in our project. So, with Core you don't have to install any gems.",
+  "main": "core/_core.scss",
+  "keywords": [
+    "sass",
+    "compass",
+    "libs",
+    "core",
+    "susy",
+    "ceaser",
+    "skeleton",
+    "getskeleton",
+	"jacket", 
+	"component"
+  ],
+  "license": "MIT",
+  "homepage": "http://polikin.github.io/core/"
+}

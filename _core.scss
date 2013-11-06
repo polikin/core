@@ -31,7 +31,15 @@
 /*****************/
 
 /**
-* @tags:	susy compass grid || (http://susy.oddbird.net/
+* @tags:	susy compass grid || http://susy.oddbird.net/
 */
 
 @import "src/_susy";
+
+/*****************/
+
+/**
+* @tags:	Jacket - Conditional Styles with Sass. Dress you CSS appropriately. || https://github.com/Team-Sass/jacket
+*/
+
+@import "src/jacket/_jacket";

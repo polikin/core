@@ -1,0 +1,80 @@
+@mixin backgroundimage-charcoal($name, $ext, $pos:top left, $repeat: no-repeat, $bgcolor:transparent, $bgsize: null, $important:null, $size: null, $height: null, $fallback:null) {	
+	@if $core == true {
+		background: url('../../../../charcoal/modules/admin/assets/images/#{$name}.#{$ext}') $pos $repeat $bgcolor $important;
+		
+		@if $ext == svg {
+			@if $fallback == false {
+				//no png fallback
+			}@else {
+				.no-svg & { background: url('../../../../charcoal/modules/admin/assets/images/#{$name}.png') $pos $repeat $bgcolor $important; }
+			}
+		}	
+		
+		@if $bgsize != null {
+			background-size: $bgsize;
+		}	
+		
+		@if $size == true {
+			
+			height: image-height('../../../../charcoal/modules/admin/assets/images/#{$name}.#{$ext}');
+			width: 	image-width('../../../../charcoal/modules/admin/assets/images/#{$name}.#{$ext}');
+		
+			@if $ext == svg {
+				height: image-height('../../../../charcoal/modules/admin/assets/images/#{$name}.png');
+				width: 	image-width('../../../../charcoal/modules/admin/assets/images/#{$name}.png');
+			}
+		}
+		
+	}@elseif $core == module {
+		background: url('get-asset-images?a=#{$name}.#{$ext}') $pos $repeat $bgcolor $important;
+		
+		@if $ext == svg {
+			@if $fallback == false {
+				//no png fallback
+			}@else {
+				.no-svg & { background: url('get-asset-images?a=#{$name}.png') $pos $repeat $bgcolor $important; }
+			}
+		}	
+		
+		@if $bgsize != null {
+			background-size: $bgsize;
+		}	
+		
+	}
+	
+	@if $size == true {
+		@if $core == true {
+			height: image-height('../../../../charcoal/modules/admin/assets/images/#{$name}.#{$ext}');
+			width: 	image-width('../../../../charcoal/modules/admin/assets/images/#{$name}.#{$ext}');
+			
+			@if $ext == svg {
+				height: image-height('../../../../charcoal/modules/admin/assets/images/#{$name}.png');
+				width: 	image-width('../../../../charcoal/modules/admin/assets/images/#{$name}.png');
+			}			
+		}@elseif $core == module {
+			height: image-height('get-asset-images?a=#{$name}.#{$ext}');
+			width: 	image-width('get-asset-images?a=#{$name}.#{$ext}');
+			
+			@if $ext == svg {
+				height: image-height('get-asset-images?a=#{$name}.png');
+				width: 	image-width('get-asset-images?a=#{$name}.png');
+			}			
+		}
+	}
+	
+	@if $height == true {
+		@if $core == true {
+			height: image-height('../../../../charcoal/modules/admin/assets/images/#{$name}.#{$ext}');
+			
+			@if $ext == svg {
+				height: image-height('../../../../charcoal/modules/admin/assets/images/#{$name}.png');
+			}			
+		}@elseif $core == module {
+			height: image-height('get-asset-images?a=#{$name}.#{$ext}');
+			
+			@if $ext == svg {
+				height: image-height('get-asset-images?a=#{$name}.png');
+			}			
+		}
+	}
+}
