@@ -10,6 +10,7 @@ Now with:
 - Ceaser CSS3 Animations (https://github.com/jhardy/compass-ceaser-easing)    
 - Animate.sass (https://github.com/polikin/animate.sass)   
 - GetSkeleton Grid (https://github.com/theresponsiveness/GetSkeleton1200-or-960 & http://getskeleton.com/)    
+- Jacket Sass (https://github.com/Team-Sass/jacket/)    
 
 No need to install any gems.
 
