@@ -428,20 +428,20 @@ $div-height: null !default;
 
 @mixin translate($translation:null, $x:0, $y:0, $z:0, $property: transform, $fallback:true) {
 	@if $translation == translate3d {
-		-webkit-#{$property} : translate3d($x#{px}, $y#{px}, $z#{px});
-		-moz-#{$property}    : translate3d($x#{px}, $y#{px}, $z#{px});
-		-ms-#{$property}     : translate3d($x#{px}, $y#{px}, $z#{px});
-		-o-#{$property}      : translate3d($x#{px}, $y#{px}, $z#{px});		
+		-webkit-#{$property} : translate3d($x, $y, $z);
+		-moz-#{$property}    : translate3d($x, $y, $z);
+		-ms-#{$property}     : translate3d($x, $y, $z);
+		-o-#{$property}      : translate3d($x, $y, $z);		
 	}@else if $translation == translateX {
-		-webkit-#{$property} : translateX($x#{px});
-		-moz-#{$property}    : translateX($x#{px});
-		-ms-#{$property}     : translateX($x#{px});
-		-o-#{$property}      : translateX($x#{px});
+		-webkit-#{$property} : translateX($x);
+		-moz-#{$property}    : translateX($x);
+		-ms-#{$property}     : translateX($x);
+		-o-#{$property}      : translateX($x);
 	}@else if $translation == translateY {
-		-webkit-#{$property} : translateY($y#{px});
-		-moz-#{$property}    : translateY($y#{px});
-		-ms-#{$property}     : translateY($y#{px});
-		-o-#{$property}      : translateY($y#{px});
+		-webkit-#{$property} : translateY($y);
+		-moz-#{$property}    : translateY($y);
+		-ms-#{$property}     : translateY($y);
+		-o-#{$property}      : translateY($y);
 	}
 	
 	@if $fallback == false {
