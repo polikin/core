@@ -1,8 +1,10 @@
-core
-==============
+#core
+
+####twitter: @_polikin
+
 
 #####* The docs will come soon!
-
+==============
 Every librairie is called by mixin. So, you can call `@import "_core"` and until you include a mixin, nothing will be output.
 
 Now with:    
