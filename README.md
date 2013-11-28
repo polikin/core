@@ -5,7 +5,7 @@
 
 #####* The docs will come soon!
 ==============
-Every librairie is called by mixin. So, you can call `@import "_core"` and until you include a mixin, nothing will be output.
+Every librairie is called by mixin. So, you can call `@import "_core"` and until you include a mixin, nothing will be output. No dependencies!
 
 Now with:    
 - Susy Responsive Grid (http://susy.oddbird.net/)    
