@@ -841,3 +841,40 @@ $font-url: false !default;
 }
 
 /*****************/
+
+/**
+* @tags  : https://github.com/SimonWpt/rem
+* @for   : rem() is a Sass mixin that converts pixel values to rem values for whatever property is passed to it.s
+* @mixin : @include rem();
+* @usage : .selector { @include rem('padding',10px 0 2px 5px); }
+*/
+
+@mixin rem($property,$px-values, $baseline-px: 16px) {
+    
+    /* Convert the baseline into rems */
+	$baseline-rem:$baseline-px / 1rem;
+
+    /* Print the first line in pixel values */
+	#{$property}:$px-values;
+
+    /* If there is only one (numeric) value, return the property/value line for it. */
+	@if type-of($px-values) == "number" {
+		#{$property}:$px-values / $baseline-rem;
+	}
+	@else {
+		$rem-values:unquote("");
+		@each $value in $px-values {
+
+            /* If the value is zero or a string or a color, return unchanged input */
+			@if $value == 0 or type-of($value) == "string" or type-of($value) == "color" {
+				$rem-values:append($rem-values,$value);
+			}
+			@else {
+				$rem-values:append($rem-values,$value / $baseline-rem);
+			}
+		}
+
+        /* Return the property and its list of converted values */
+		#{$property}: $rem-values;
+	}
+}
