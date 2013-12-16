@@ -35,19 +35,19 @@ $core: null !default;
 */
 
 @mixin core-media-query($value, $operator: 'min-width', $query: 'screen') {
-	@media {$query} and ({$operator}: {$value}px) {
+	@media #{$query} and (#{$operator}: #{$value}px) {
 		@content;
 	}
 }
 
 @mixin core-media-query-max($value, $operator: 'max-width', $query: 'screen') {
-	@media {$query} and ({$operator}: {$value}px) {
+	@media #{$query} and (#{$operator}: #{$value}px) {
 		@content;
 	}
 }
 
 @mixin core-media-query-minmax($value-min, $value-max, $operator: 'min-width', $operator2: 'max-width', $query: 'screen') {
-	@media {$query} and ({$operator}: {$value-min}px) and ({$operator2}: {$value-max}px) {
+	@media #{$query} and (#{$operator}: #{$value-min}px) and (#{$operator2}: #{$value-max}px) {
 		@content;
 	}
 }
@@ -74,8 +74,8 @@ $core: null !default;
 * @usage : .selector { @include size(104, 104); }
 */
 @mixin core-size($height, $width) {
-	height: {$height}px;
-	width:	{$width}px;
+	height: #{$height}px;
+	width:	#{$width}px;
 }
 
 /*****************/
@@ -91,13 +91,13 @@ $core: null !default;
 
 @mixin core-backgroundimage($name, $ext, $pos:top left, $repeat: no-repeat, $bgcolor:transparent, $bgsize: null, $important:null, $size: null, $height: null, $fallback:null) {	
 	@if $core == true {
-		background: url('../../../../charcoal/modules/admin/assets/images/{$name}.{$ext}') $pos $repeat $bgcolor $important;
+		background: url('../../../../charcoal/modules/admin/assets/images/#{$name}.#{$ext}') $pos $repeat $bgcolor $important;
 		
 		@if $ext == svg {
 			@if $fallback == false {
 				//no png fallback
 			}@else {
-				.no-svg & { background: image-url('{$name}.png') $pos $repeat $bgcolor $important; }
+				.no-svg & { background: image-url('#{$name}.png') $pos $repeat $bgcolor $important; }
 			}
 		}	
 		
@@ -106,13 +106,13 @@ $core: null !default;
 		}	
 		
 	}@elseif $core == module {
-		background: url('get-asset-images?a={$name}.{$ext}') $pos $repeat $bgcolor $important;
+		background: url('get-asset-images?a=#{$name}.#{$ext}') $pos $repeat $bgcolor $important;
 		
 		@if $ext == svg {
 			@if $fallback == false {
 				//no png fallback
 			}@else {
-				.no-svg & { background: image-url('{$name}.png') $pos $repeat $bgcolor $important; }
+				.no-svg & { background: image-url('#{$name}.png') $pos $repeat $bgcolor $important; }
 			}
 		}	
 		
@@ -121,13 +121,13 @@ $core: null !default;
 		}	
 		
 	}@else {
-		background: image-url('{$name}.{$ext}') $pos $repeat $bgcolor $important;
+		background: image-url('#{$name}.#{$ext}') $pos $repeat $bgcolor $important;
 		
 		@if $ext == svg {
 			@if $fallback == false {
 				//no png fallback
 			}@else {
-				.no-svg & { background: image-url('{$name}.png') $pos $repeat $bgcolor $important; }
+				.no-svg & { background: image-url('#{$name}.png') $pos $repeat $bgcolor $important; }
 			}
 		}
 		
@@ -138,24 +138,24 @@ $core: null !default;
 	
 	@if $size == true {
 		@if $core == true {
-			height: image-height('../../../../charcoal/modules/admin/assets/images/{$name}.{$ext}');
-			width: 	image-width('../../../../charcoal/modules/admin/assets/images/{$name}.{$ext}');
+			height: image-height('../../../../charcoal/modules/admin/assets/images/#{$name}.#{$ext}');
+			width: 	image-width('../../../../charcoal/modules/admin/assets/images/#{$name}.#{$ext}');
 			
 		}@elseif $ext == svg {
-			height: image-height('{$name}.png');
-			width: 	image-width('{$name}.png');
+			height: image-height('#{$name}.png');
+			width: 	image-width('#{$name}.png');
 		}
 		@else {
-			height: image-height('{$name}.{$ext}');
-			width: 	image-width('{$name}.{$ext}');
+			height: image-height('#{$name}.#{$ext}');
+			width: 	image-width('#{$name}.#{$ext}');
 		}
 	}
 	
 	@if $height == true {
-		height: image-height('{$name}.{$ext}');
+		height: image-height('#{$name}.#{$ext}');
 		
 		@if $ext == svg {
-			height: image-height('{$name}.png');
+			height: image-height('#{$name}.png');
 		}
 	}
 }
@@ -173,10 +173,10 @@ $core: null !default;
 
 @mixin core-image-height($name, $ext) {
 	@if $core == true {
-		height: image-height('../../../../charcoal/modules/admin/assets/images/{$name}.{$ext}');
+		height: image-height('../../../../charcoal/modules/admin/assets/images/#{$name}.#{$ext}');
 		
 	}@else {
-		height: image-height('{$name}.{$ext}');
+		height: image-height('#{$name}.#{$ext}');
 	}
 }
 
@@ -192,9 +192,9 @@ $core: null !default;
 
 @mixin core-image-width($name, $ext) {
 	@if $core == true {
-		width: 	image-width('../../../../charcoal/modules/admin/assets/images/{$name}.{$ext}');
+		width: 	image-width('../../../../charcoal/modules/admin/assets/images/#{$name}.#{$ext}');
 	}@else {
-		width: 	image-width('{$name}.{$ext}');
+		width: 	image-width('#{$name}.#{$ext}');
 	}
 }
 
@@ -210,11 +210,11 @@ $core: null !default;
 
 @mixin core-image-size($name, $ext) {
 	@if $core == true {
-		height: image-height('../../../../charcoal/modules/admin/assets/images/{$name}.{$ext}');
-		width: 	image-width('../../../../charcoal/modules/admin/assets/images/{$name}.{$ext}');
+		height: image-height('../../../../charcoal/modules/admin/assets/images/#{$name}.#{$ext}');
+		width: 	image-width('../../../../charcoal/modules/admin/assets/images/#{$name}.#{$ext}');
 	}@else {
-		height: image-height('{$name}.{$ext}');
-		width: 	image-width('{$name}.{$ext}');
+		height: image-height('#{$name}.#{$ext}');
+		width: 	image-width('#{$name}.#{$ext}');
 	}
 }
 
@@ -279,23 +279,23 @@ $div-height: null !default;
 		
 			margin:	auto;
 		
-			height: image-height('{$name}.{$ext}');
-			width: 	image-width('{$name}.{$ext}');
+			height: image-height('#{$name}.#{$ext}');
+			width: 	image-width('#{$name}.#{$ext}');
 		
 			@if $core == true { /* @if we need image from the core | use this variable for custom charcoal skin */
-				height: image-height('../../../../charcoal/modules/admin/assets/images/{$name}.{$ext}');
-				width: 	image-width('../../../../charcoal/modules/admin/assets/images/{$name}.{$ext}');
+				height: image-height('../../../../charcoal/modules/admin/assets/images/#{$name}.#{$ext}');
+				width: 	image-width('../../../../charcoal/modules/admin/assets/images/#{$name}.#{$ext}');
 			}@else { /* config.rb relative assets */
-				height: image-height('{$name}.{$ext}');
-				width: 	image-width('{$name}.{$ext}');
+				height: image-height('#{$name}.#{$ext}');
+				width: 	image-width('#{$name}.#{$ext}');
 			}
 		
 			@if $core == true { /* @if we need image from the core | use this variable for custom charcoal skin */
-				background: url('../../../../charcoal/modules/admin/assets/images/{$name}.{$ext}') $repeat $bgcolor $important;
+				background: url('../../../../charcoal/modules/admin/assets/images/#{$name}.#{$ext}') $repeat $bgcolor $important;
 			}@elseif $core == module { /* (get-asset-images) charcoal function | take image from the modules define into the config.json */
-				background: url('get-asset-images?a={$name}.{$ext}') $repeat $bgcolor $important;
+				background: url('get-asset-images?a=#{$name}.#{$ext}') $repeat $bgcolor $important;
 			}@else { /* config.rb relative assets */
-				background: image-url('{$name}.{$ext}') $repeat $bgcolor $important;
+				background: image-url('#{$name}.#{$ext}') $repeat $bgcolor $important;
 			}
 		
 			.ie7 & {
@@ -303,12 +303,12 @@ $div-height: null !default;
 				top:		$top;
 		
 				@if $top == 50% {
-					margin-top:  - image-height('{$name}.{$ext}') / 2;
+					margin-top:  - image-height('#{$name}.#{$ext}') / 2;
 				}
 		
-				margin-left: - image-width('{$name}.{$ext}') / 2;
-				height: image-height('{$name}.{$ext}');
-				width: 	image-width('{$name}.{$ext}');
+				margin-left: - image-width('#{$name}.#{$ext}') / 2;
+				height: image-height('#{$name}.#{$ext}');
+				width: 	image-width('#{$name}.#{$ext}');
 			}
 		
 		}@else {
@@ -397,22 +397,22 @@ $div-height: null !default;
 	@each $prefix in $prefixes {
 
 		@if $prefix == webkit {
-			-webkit-{$property}: $value;
+			-webkit-#{$property}: $value;
 		}
 		@else if $prefix == moz {
-			-moz-{$property}: $value;
+			-moz-#{$property}: $value;
 		}
 		@else if $prefix == ms {
-			-ms-{$property}: $value;
+			-ms-#{$property}: $value;
 		}
 		@else if $prefix == o {
-			-o-{$property}: $value;
+			-o-#{$property}: $value;
 		}
 		@else if $prefix == spec {
-			{$property}: $value;
+			#{$property}: $value;
 		}
 		@else {
-			@warn "Unrecognized prefix: {$prefix}";
+			@warn "Unrecognized prefix: #{$prefix}";
 		}
 	}
 }
@@ -428,20 +428,20 @@ $div-height: null !default;
 
 @mixin translate($translation:null, $x:0, $y:0, $z:0, $property: transform, $fallback:true) {
 	@if $translation == translate3d {
-		-webkit-{$property} : translate3d($x, $y, $z);
-		-moz-{$property}    : translate3d($x, $y, $z);
-		-ms-{$property}     : translate3d($x, $y, $z);
-		-o-{$property}      : translate3d($x, $y, $z);		
+		-webkit-#{$property} : translate3d($x, $y, $z);
+		-moz-#{$property}    : translate3d($x, $y, $z);
+		-ms-#{$property}     : translate3d($x, $y, $z);
+		-o-#{$property}      : translate3d($x, $y, $z);		
 	}@else if $translation == translateX {
-		-webkit-{$property} : translateX($x);
-		-moz-{$property}    : translateX($x);
-		-ms-{$property}     : translateX($x);
-		-o-{$property}      : translateX($x);
+		-webkit-#{$property} : translateX($x);
+		-moz-#{$property}    : translateX($x);
+		-ms-#{$property}     : translateX($x);
+		-o-#{$property}      : translateX($x);
 	}@else if $translation == translateY {
-		-webkit-{$property} : translateY($y);
-		-moz-{$property}    : translateY($y);
-		-ms-{$property}     : translateY($y);
-		-o-{$property}      : translateY($y);
+		-webkit-#{$property} : translateY($y);
+		-moz-#{$property}    : translateY($y);
+		-ms-#{$property}     : translateY($y);
+		-o-#{$property}      : translateY($y);
 	}
 	
 	@if $fallback == false {
@@ -477,22 +477,22 @@ $div-height: null !default;
   @each $prefix in $prefixes {
 
     @if $prefix == webkit {
-      -webkit-{$property}: -webkit-{$value};
+      -webkit-#{$property}: -webkit-#{$value};
     }
     @else if $prefix == moz {
-      -moz-{$property}: -moz-{$value};
+      -moz-#{$property}: -moz-#{$value};
     }
     @else if $prefix == ms {
-      -ms-{$property}: -ms-{$value};
+      -ms-#{$property}: -ms-#{$value};
     }
     @else if $prefix == o {
-      -o-{$property}: -o-{$value};
+      -o-#{$property}: -o-#{$value};
     }
     @else if $prefix == spec {
-      {$property}: {$value};
+      #{$property}: #{$value};
     }
     @else {
-      @warn "Unrecognized prefix: {$prefix}";
+      @warn "Unrecognized prefix: #{$prefix}";
     }
   }
 }
@@ -511,22 +511,22 @@ $div-height: null !default;
   @each $prefix in $prefixes {
 
     @if $prefix == webkit {
-      {$property}: -webkit-{$value};
+      #{$property}: -webkit-#{$value};
     }
     @else if $prefix == moz {
-      {$property}: -moz-{$value};
+      #{$property}: -moz-#{$value};
     }
     @else if $prefix == ms {
-      {$property}: -ms-{$value};
+      #{$property}: -ms-#{$value};
     }
     @else if $prefix == o {
-      {$property}: -o-{$value};
+      #{$property}: -o-#{$value};
     }
     @else if $prefix == spec {
-      {$property}: {$value};
+      #{$property}: #{$value};
     }
     @else {
-      @warn "Unrecognized prefix: {$prefix}";
+      @warn "Unrecognized prefix: #{$prefix}";
     }
   }
 }
@@ -549,22 +549,22 @@ $div-height: null !default;
   @each $prefix in $prefixes {
 
     @if $prefix == webkit {
-      @-webkit-keyframes {$property} { @content; }
+      @-webkit-keyframes #{$property} { @content; }
     }
     @else if $prefix == moz {
-      @-moz-keyframes {$property} { @content; }
+      @-moz-keyframes #{$property} { @content; }
     }
     @else if $prefix == ms {
-      @-ms-keyframes {$property} { @content; }
+      @-ms-keyframes #{$property} { @content; }
     }
     @else if $prefix == o {
-      @-o-keyframes {$property} { @content; }
+      @-o-keyframes #{$property} { @content; }
     }
     @else if $prefix == spec {
-      @keyframes {$property} { @content; }
+      @keyframes #{$property} { @content; }
     }
     @else {
-      @warn "Unrecognized prefix: {$prefix}";
+      @warn "Unrecognized prefix: #{$prefix}";
     }
   }
 }
@@ -645,12 +645,12 @@ $font-url: false !default;
 			font-weight: $weight;
 			font-style: $style;
 
-			src: font-url('{$file-path}.eotiefix');
+			src: font-url('#{$file-path}.eotiefix');
 
-			src: font-url('{$file-path}.eot?iefix') format('embedded-opentype'),
-			font-url('{$file-path}.woff') format('woff'),
-			font-url('{$file-path}.ttf') format('truetype'),
-			font-url('{$file-path}.svg{$font-family}') format('svg');
+			src: font-url('#{$file-path}.eot?iefix') format('embedded-opentype'),
+			font-url('#{$file-path}.woff') format('woff'),
+			font-url('#{$file-path}.ttf') format('truetype'),
+			font-url('#{$file-path}.svg#{$font-family}') format('svg');
 		}
 	}@elseif $font-url == false {
 		@font-face {
@@ -658,12 +658,12 @@ $font-url: false !default;
 			font-weight: $weight;
 			font-style: $style;
 
-			src: url('{$file-path}.eotiefix');
+			src: url('#{$file-path}.eotiefix');
 
-			src: url('{$file-path}.eot?iefix') format('embedded-opentype'),
-			url('{$file-path}.woff') format('woff'),
-			url('{$file-path}.ttf') format('truetype'),
-			url('{$file-path}.svg{$font-family}') format('svg');
+			src: url('#{$file-path}.eot?iefix') format('embedded-opentype'),
+			url('#{$file-path}.woff') format('woff'),
+			url('#{$file-path}.ttf') format('truetype'),
+			url('#{$file-path}.svg#{$font-family}') format('svg');
 		}
 	}
 }
@@ -754,7 +754,7 @@ $font-url: false !default;
 
 @mixin core-placeholder-color($color) { 	
 	@each $prefix in "::-webkit-input", ":moz", "::-moz", ":-ms-input" {
-	    {$prefix}-placeholder {
+	    #{$prefix}-placeholder {
 	     	color: $color;	
 	    }
 	}
@@ -770,7 +770,7 @@ $font-url: false !default;
 @mixin core-placeholder-content() {
  	
 	@each $prefix in "::-webkit-input", ":moz", "::-moz", ":-ms-input" {
-	    {$prefix}-placeholder {
+	    #{$prefix}-placeholder {
 
 	     	@content;
 	    }
@@ -807,20 +807,20 @@ $font-url: false !default;
 
 @mixin core-translate($translation:null, $x:0, $y:0, $z:0, $property: transform, $fallback:true) {
 	@if $translation == translate3d {
-		-moz-{$property}    : translate3d($x, $y, $z);
-		-webkit-{$property} : translate3d($x, $y, $z);
-		-ms-{$property}     : translate3d($x, $y, $z);
-		-o-{$property}      : translate3d($x, $y, $z);		
+		-moz-#{$property}    : translate3d($x, $y, $z);
+		-webkit-#{$property} : translate3d($x, $y, $z);
+		-ms-#{$property}     : translate3d($x, $y, $z);
+		-o-#{$property}      : translate3d($x, $y, $z);		
 	}@else if $translation == translateX {
-		-webkit-{$property} : translateX($x);
-		-moz-{$property}    : translateX($x);
-		-ms-{$property}     : translateX($x);
-		-o-{$property}      : translateX($x);
+		-webkit-#{$property} : translateX($x);
+		-moz-#{$property}    : translateX($x);
+		-ms-#{$property}     : translateX($x);
+		-o-#{$property}      : translateX($x);
 	}@else if $translation == translateY {
-		-webkit-{$property} : translateY($y);
-		-moz-{$property}    : translateY($y);
-		-ms-{$property}     : translateY($y);
-		-o-{$property}      : translateY($y);
+		-webkit-#{$property} : translateY($y);
+		-moz-#{$property}    : translateY($y);
+		-ms-#{$property}     : translateY($y);
+		-o-#{$property}      : translateY($y);
 	}
 	
 	@if $fallback == true {
@@ -855,11 +855,11 @@ $font-url: false !default;
 	$baseline-rem:$baseline-px / 1rem;
 
     /* Print the first line in pixel values */
-	{$property}:$px-values;
+	#{$property}:$px-values;
 
     /* If there is only one (numeric) value, return the property/value line for it. */
 	@if type-of($px-values) == "number" {
-		{$property}:$px-values / $baseline-rem;
+		#{$property}:$px-values / $baseline-rem;
 	}
 	@else {
 		$rem-values:unquote("");
@@ -875,6 +875,6 @@ $font-url: false !default;
 		}
 
         /* Return the property and its list of converted values */
-		{$property}: $rem-values;
+		#{$property}: $rem-values;
 	}
 }
