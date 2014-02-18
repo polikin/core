@@ -1,0 +1,5 @@
+{
+  "name": "Core",
+  "description": "The main idea here is that Core import some libs that we probably use everytime in our project. So, with Core you don't have to install any gems. Everything is up to date and ready to be import",
+  "tags": ["sass", "library", "compass", "mixins", "susy", "skeleton", "ceaser", "jacket", "scss"]
+}
