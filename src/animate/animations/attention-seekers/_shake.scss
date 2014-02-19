@@ -1,15 +1,15 @@
 @mixin shake($prefix) {
-  0%   { @include transform(translateX(0), $prefix); }
-  10%  { @include transform(translateX(-10px), $prefix); }
-  20%  { @include transform(translateX(10px), $prefix); }
-  30%  { @include transform(translateX(-10px), $prefix); }
-  40%  { @include transform(translateX(10px), $prefix); }
-  50%  { @include transform(translateX(-10px), $prefix); }
-  60%  { @include transform(translateX(10px), $prefix); }
-  70%  { @include transform(translateX(-10px), $prefix); }
-  80%  { @include transform(translateX(10px), $prefix); }
-  90%  { @include transform(translateX(-10px), $prefix); }
-  100% { @include transform(translateX(0), $prefix); }
+  0%   { @include animate-transform(translateX(0), $prefix); }
+  10%  { @include animate-transform(translateX(-10px), $prefix); }
+  20%  { @include animate-transform(translateX(10px), $prefix); }
+  30%  { @include animate-transform(translateX(-10px), $prefix); }
+  40%  { @include animate-transform(translateX(10px), $prefix); }
+  50%  { @include animate-transform(translateX(-10px), $prefix); }
+  60%  { @include animate-transform(translateX(10px), $prefix); }
+  70%  { @include animate-transform(translateX(-10px), $prefix); }
+  80%  { @include animate-transform(translateX(10px), $prefix); }
+  90%  { @include animate-transform(translateX(-10px), $prefix); }
+  100% { @include animate-transform(translateX(0), $prefix); }
 }
 
 @mixin include-shake {

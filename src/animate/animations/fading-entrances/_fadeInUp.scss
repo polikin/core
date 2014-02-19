@@ -1,11 +1,11 @@
 @mixin fadeInUp($prefix) {
   0% {
     opacity: 0;
-    @include transform(translateY(20px), $prefix);
+    @include animate-transform(translateY(20px), $prefix);
   }
   100% {
     opacity: 1;
-    @include transform(translateY(0), $prefix);
+    @include animate-transform(translateY(0), $prefix);
   }
 }
 

@@ -1,22 +1,22 @@
 @mixin flip($prefix) {
 	0% {
-		@include transform(perspective(400px) rotateY(0), $prefix);
+		@include animate-transform(perspective(400px) rotateY(0), $prefix);
 		@include animation-timing-function(ease-out, $prefix: $prefix);
 	}
 	40% {
-		@include transform(perspective(400px) translateZ(150px) rotateY(170deg), $prefix);
+		@include animate-transform(perspective(400px) translateZ(150px) rotateY(170deg), $prefix);
 		@include animation-timing-function(ease-out, $prefix: $prefix);
 	}
 	50% {
-		@include transform(perspective(400px) translateZ(150px) rotateY(190deg) scale(1), $prefix);
+		@include animate-transform(perspective(400px) translateZ(150px) rotateY(190deg) scale(1), $prefix);
 		@include animation-timing-function(ease-in, $prefix: $prefix);
 	}
 	80% {
-		@include transform(perspective(400px) rotateY(360deg) scale(.95), $prefix);
+		@include animate-transform(perspective(400px) rotateY(360deg) scale(.95), $prefix);
 		@include animation-timing-function(ease-in, $prefix: $prefix);
 	}
 	100% {
-		@include transform(perspective(400px) scale(1), $prefix);
+		@include animate-transform(perspective(400px) scale(1), $prefix);
 		@include animation-timing-function(ease-in, $prefix: $prefix);
 	}
 }

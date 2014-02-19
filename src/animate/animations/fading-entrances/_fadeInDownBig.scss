@@ -1,11 +1,11 @@
 @mixin fadeInDownBig($prefix) {
   0% {
     opacity: 0;
-    @include transform(translateY(-2000px), $prefix);
+    @include animate-transform(translateY(-2000px), $prefix);
   }
   100% {
     opacity: 1;
-    @include transform(translateY(0), $prefix);
+    @include animate-transform(translateY(0), $prefix);
   }
 }
 

@@ -1,11 +1,11 @@
 @mixin fadeOutLeft($prefix) {
   0% {
     opacity: 1;
-    @include transform(translateX(0), $prefix);
+    @include animate-transform(translateX(0), $prefix);
   }
   100% {
     opacity: 0;
-    @include transform(translateX(-20px), $prefix);
+    @include animate-transform(translateX(-20px), $prefix);
   }
 }
 

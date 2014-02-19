@@ -1,0 +1,52 @@
+.foo {
+  display: none;
+  -webkit-animation: fadeIn 10s ease 0.2s 1 normal;
+  -moz-animation: fadeIn 10s ease 0.2s 1 normal;
+  -ms-animation: fadeIn 10s ease 0.2s 1 normal;
+  -o-animation: fadeIn 10s ease 0.2s 1 normal;
+  animation: fadeIn 10s ease 0.2s 1 normal;
+  margin: 0 auto;
+  width: 400px;
+}
+
+.bar {
+  display: none;
+  -webkit-animation-name: bounceIn, fadeIn;
+  -moz-animation-name: bounceIn, fadeIn;
+  -ms-animation-name: bounceIn, fadeIn;
+  -o-animation-name: bounceIn, fadeIn;
+  animation-name: bounceIn, fadeIn;
+  -webkit-animation-duration: 2.25s, 5.5s;
+  -moz-animation-duration: 2.25s, 5.5s;
+  -ms-animation-duration: 2.25s, 5.5s;
+  -o-animation-duration: 2.25s, 5.5s;
+  animation-duration: 2.25s, 5.5s;
+  -webkit-animation-timing-function: ease, ease-in;
+  -moz-animation-timing-function: ease, ease-in;
+  -ms-animation-timing-function: ease, ease-in;
+  -o-animation-timing-function: ease, ease-in;
+  animation-timing-function: ease, ease-in;
+  margin: 0 auto;
+  width: 400px;
+}
+
+.baz {
+  display: none;
+  -webkit-animation-name: fadeIn;
+  -moz-animation-name: fadeIn;
+  -ms-animation-name: fadeIn;
+  -o-animation-name: fadeIn;
+  animation-name: fadeIn;
+  -webkit-animation-duration: 2s;
+  -moz-animation-duration: 2s;
+  -ms-animation-duration: 2s;
+  -o-animation-duration: 2s;
+  animation-duration: 2s;
+  -webkit-animation-timing-function: ease;
+  -moz-animation-timing-function: ease;
+  -ms-animation-timing-function: ease;
+  -o-animation-timing-function: ease;
+  animation-timing-function: ease;
+  margin: 0 auto;
+  width: 400px;
+}
